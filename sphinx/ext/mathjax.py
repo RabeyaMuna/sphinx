@@ -111,7 +111,7 @@ def install_mathjax(
             case str(config_filename):
                 config_filepath = app.srcdir / config_filename
                 if not config_filepath.exists():
-                    raise ExtensionError(f'mathjax3_config file not found')
+                    raise ExtensionError('mathjax3_config file not found')
                 if not config_filepath.is_file():
                     raise ExtensionError('mathjax3_config is not a file')
                 if config_filepath.suffix != '.js':
@@ -120,7 +120,7 @@ def install_mathjax(
                     body = f.read()
                 builder.add_js_file('', body=body)
             case dict(config_dict):
-                body = f"window.MathJax = {json.dumps(config_dict)}"
+                body = f'window.MathJax = {json.dumps(config_dict)}'
                 builder.add_js_file('', body=body)
             case _:
                 raise ExtensionError(
